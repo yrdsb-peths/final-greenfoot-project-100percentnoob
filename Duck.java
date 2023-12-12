@@ -6,16 +6,39 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Duck extends World
+public class Duck extends SmoothMover
 {
-    GreenfootImage idle = new GreenfootImage("images/Duck_idle/tile000.png");
+    int ran = Greenfoot.getRandomNumber(3);
+    double speed = 1;
+    GreenfootImage tile = new GreenfootImage("images/duck_tile/tile001.png");
     /**
-     * Constructor for objects of class Duck.
-     * 
+     * Act - do whatever the Duck wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public Duck()
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
+    {
+        setImage(tile);
+        tile.scale(75,75);
+    }
+    public void act()
+    {
+        double x = getExactX() + speed;
+       double y = getExactY() - speed;
+       setLocation(x,y);
+        if(Greenfoot.getRandomNumber(1000) == 1)
+        {
+        speed = speed + (1 * (ran/3)); 
+        }
+        if (getY() < 40)
+        {
+           
+            speed = -speed;
+            
+        }
+        if(getY() > 300)
+        {
+            speed = -speed;
+        }
+      
     }
 }
