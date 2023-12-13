@@ -9,7 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Duck extends SmoothMover
 {
     int ran = Greenfoot.getRandomNumber(3);
-    double speed = 1;
+    double speedx = 1;
+    double speedy = 1;
     GreenfootImage tile = new GreenfootImage("images/duck_tile/tile001.png");
     /**
      * Act - do whatever the Duck wants to do. This method is called whenever
@@ -20,24 +21,26 @@ public class Duck extends SmoothMover
         setImage(tile);
         tile.scale(75,75);
     }
+    
     public void act()
     {
-        double x = getExactX() + speed;
-       double y = getExactY() - speed;
+        double x = getExactX() + speedx;
+       double y = getExactY() + speedy;
        setLocation(x,y);
-        if(Greenfoot.getRandomNumber(1000) == 1)
+        if(Greenfoot.getRandomNumber(2) == 1)
         {
-        speed = speed + (1 * (ran/3)); 
+        speedy = speedy + ran; 
+        speedx = speedx + ran;
         }
         if (getY() < 40)
         {
            
-            speed = -speed;
+            speedy = - speedy;
             
         }
         if(getY() > 300)
         {
-            speed = -speed;
+            speedy = - speedy;
         }
       
     }
