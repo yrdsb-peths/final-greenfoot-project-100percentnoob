@@ -24,13 +24,41 @@ public class Duck extends SmoothMover
     
     public void act()
     {
+        int ran = Greenfoot.getRandomNumber(2);
+        int rightBorder = 600;
         double x = getExactX() + speedx;
-       double y = getExactY() + speedy;
-       setLocation(x,y);
-        if(Greenfoot.getRandomNumber(2) == 1)
+        double y = getExactY() + speedy;
+        setLocation(x,y);
+        if(Greenfoot.getRandomNumber(200) == 1)
         {
-        speedy = speedy + ran; 
-        speedx = speedx + ran;
+            speedy = speedy + (ran/4); 
+            speedx = speedx + (ran/4);
+        }
+        if(Greenfoot.getRandomNumber(200) == 1)
+        {
+            speedy = speedy - (ran/4);    
+        }
+        if(Greenfoot.getRandomNumber(200) == 1)
+        {
+            speedy = speedy + (ran/4);    
+        }
+
+        if(Greenfoot.getRandomNumber(200) == 1)
+        {
+            speedx = speedx + (ran/4);   
+        }
+        if(Greenfoot.getRandomNumber(200) == 1)
+        {
+            speedx = speedx - (ran/4);
+            
+        }
+        if(Greenfoot.getRandomNumber(500) == 1)
+        {
+            speedy = -speedy; 
+        }
+        if(Greenfoot.getRandomNumber(500) == 1)
+        {
+            speedx = -speedx;
         }
         if (getY() < 40)
         {
@@ -41,6 +69,14 @@ public class Duck extends SmoothMover
         if(getY() > 300)
         {
             speedy = - speedy;
+        }
+        if (getX() + 40 >= rightBorder)
+        {
+            speedx = -speedx;
+        }
+        if(getX()-40 <= 0)
+        {
+            speedx= -speedx;
         }
       
     }
