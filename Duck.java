@@ -9,8 +9,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Duck extends SmoothMover
 {
     int ran = Greenfoot.getRandomNumber(3);
-    double speedx = 1;
-    double speedy = 1;
+    double speedx = 3 + (Greenfoot.getRandomNumber(10) / 10);
+    double speedy = 3 + (Greenfoot.getRandomNumber(10) / 10);
+    
     GreenfootImage tile = new GreenfootImage("images/duck_tile/tile001.png");
     /**
      * Act - do whatever the Duck wants to do. This method is called whenever
@@ -20,46 +21,23 @@ public class Duck extends SmoothMover
     {
         setImage(tile);
         tile.scale(75,75);
+       
     }
-    
+
     public void act()
     {
-        int ran = Greenfoot.getRandomNumber(2);
+        int ran = Greenfoot.getRandomNumber(1);
         int rightBorder = 600;
-        double x = getExactX() + speedx;
+        
+        double x = getExactX() - speedx;
         double y = getExactY() + speedy;
         setLocation(x,y);
-        if(Greenfoot.getRandomNumber(200) == 1)
-        {
-            speedy = speedy + (ran/4); 
-            speedx = speedx + (ran/4);
-        }
-        if(Greenfoot.getRandomNumber(200) == 1)
-        {
-            speedy = speedy - (ran/4);    
-        }
-        if(Greenfoot.getRandomNumber(200) == 1)
-        {
-            speedy = speedy + (ran/4);    
-        }
+        
+       
 
-        if(Greenfoot.getRandomNumber(200) == 1)
-        {
-            speedx = speedx + (ran/4);   
-        }
-        if(Greenfoot.getRandomNumber(200) == 1)
-        {
-            speedx = speedx - (ran/4);
-            
-        }
-        if(Greenfoot.getRandomNumber(500) == 1)
-        {
-            speedy = -speedy; 
-        }
-        if(Greenfoot.getRandomNumber(500) == 1)
-        {
-            speedx = -speedx;
-        }
+       
+        
+        
         if (getY() < 40)
         {
            
