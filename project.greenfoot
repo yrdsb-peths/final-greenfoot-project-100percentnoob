@@ -1,11 +1,15 @@
 #Greenfoot project file
 class.Duck.image=bee.png
+class.MyWorld.image=Capture.PNG
+dependency1.from=MyWorld
+dependency1.to=Duck
+dependency1.type=UsesDependency
 editor.fx.0.height=739
 editor.fx.0.width=816
 editor.fx.0.x=1053
 editor.fx.0.y=105
 height=1040
-package.numDependencies=0
+package.numDependencies=1
 package.numTargets=6
 project.charset=windows-1252
 publish.hasSource=false
