@@ -1,6 +1,6 @@
 #Greenfoot project file
 class.Duck.image=bee.png
-class.MyWorld.image=Capture.PNG
+class.MyWorld.image=gameBackground.png
 dependency1.from=MyWorld
 dependency1.to=Duck
 dependency1.type=UsesDependency
