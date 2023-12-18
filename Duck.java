@@ -11,11 +11,11 @@ public class Duck extends SmoothMover
     int ran = Greenfoot.getRandomNumber(3);
     double speedx = 3 + (Greenfoot.getRandomNumber(10) / 10);
     double speedy = 3 + (Greenfoot.getRandomNumber(10) / 10);
-    GreenfootImage[] idleRight = new GreenfootImage[6];
-    GreenfootImage[] idleLeft = new GreenfootImage[6];
-    
-        SimpleTimer animationTimer = new SimpleTimer();
-        String facing = "left";
+    GreenfootImage[] idleRight = new GreenfootImage[3];
+    GreenfootImage[] idleLeft = new GreenfootImage[3];
+
+    SimpleTimer animationTimer = new SimpleTimer();
+    String facing = "left";
 
     /**
      * Act - do whatever the Duck wants to do. This method is called whenever
@@ -23,13 +23,13 @@ public class Duck extends SmoothMover
      */
     public Duck()
     {
-        
-        for(int i = 4; i< idleRight.length; i++)
+
+        for(int i = 0; i< idleRight.length; i++)
         {
-            idleRight[i] = new GreenfootImage("images/duck_tile/tile00" + i + ".png");
+            idleRight[i] = new GreenfootImage("images/ducks/tile00" + i + ".png");
             idleRight[i].scale(75,75);
         }
-        for(int i = 4; i< idleLeft.length; i++)
+        for(int i = 0; i< idleLeft.length; i++)
         {
             idleLeft[i] = new GreenfootImage("images/duck_tile/tile00" + i + ".png");
             idleLeft[i].mirrorHorizontally();
@@ -37,12 +37,12 @@ public class Duck extends SmoothMover
         }
         animationTimer.mark();
         setImage(idleRight[0]);
-       
+
     }
     int imageIndex = 0;
     public void animateDuck()
     {
-        if(animationTimer.millisElapsed() <100)
+        if(animationTimer.millisElapsed() < 100)
         {
             return;
         }
@@ -54,35 +54,36 @@ public class Duck extends SmoothMover
         }
         else 
         {
-             setImage(idleLeft[imageIndex]);
-             imageIndex = (imageIndex + 1) % idleLeft.length;
+            setImage(idleLeft[imageIndex]);
+            imageIndex = (imageIndex + 1) % idleLeft.length;
         }
     }
-    
+
     public void act()
     {
         int ran = Greenfoot.getRandomNumber(1);
-        int rightBorder = 600;
         
+
         double x = getExactX() - speedx;
         double y = getExactY() + speedy;
         setLocation(x,y);
         animateDuck();
-       
 
-       
+        checkWalls();
         
-        
+    }
+    
+    private void checkWalls(){
+        int rightBorder = 600;
         if (getY() < 40)
         {
-           
             speedy = - speedy;
-             facing = "right";
+            facing = "right";
         }
         if(getY() > 300)
         {
             speedy = - speedy;
-             facing = "right";
+            facing = "right";
         }
         if (getX() + 40 >= rightBorder)
         {
@@ -94,6 +95,5 @@ public class Duck extends SmoothMover
             speedx= -speedx;
             facing = "right";
         }
-      
     }
 }
