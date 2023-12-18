@@ -23,5 +23,8 @@ public class MyWorld extends World
         Duck duck = new Duck();
         int x = Greenfoot.getRandomNumber(500);
         addObject(duck,40 + x,300);
+        Crosshair crosshair = new Crosshair();
+        addObject(crosshair,getWidth()/2,getHeight()/2);
+        
     }
 }
