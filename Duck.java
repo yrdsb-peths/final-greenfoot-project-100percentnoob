@@ -31,7 +31,7 @@ public class Duck extends SmoothMover
         }
         for(int i = 0; i< idleLeft.length; i++)
         {
-            idleLeft[i] = new GreenfootImage("images/duck_tile/tile00" + i + ".png");
+            idleLeft[i] = new GreenfootImage("images/ducks/tile00" + i + ".png");
             idleLeft[i].mirrorHorizontally();
             idleLeft[i].scale(75,75);
         }
@@ -78,17 +78,26 @@ public class Duck extends SmoothMover
         if (getY() < 40)
         {
             speedy = - speedy;
-            facing = "right";
+            if (speedx < 0 && speedy < 0)
+            {
+                facing = "right";
+            }
+           
         }
         if(getY() > 300)
         {
             speedy = - speedy;
-            facing = "right";
+            facing = "left";
+            if (speedx < 0 && speedy < 0)
+            {
+                facing = "right";
+            }
         }
         if (getX() + 40 >= rightBorder)
         {
             speedx = -speedx;
             facing = "left";
+             
         }
         if(getX()-40 <= 0)
         {
