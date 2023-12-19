@@ -16,7 +16,7 @@ public class Duck extends SmoothMover
 
     SimpleTimer animationTimer = new SimpleTimer();
     String facing = "left";
-
+    SimpleTimer duckTimer = new SimpleTimer();
     /**
      * Act - do whatever the Duck wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -37,9 +37,16 @@ public class Duck extends SmoothMover
         }
         animationTimer.mark();
         setImage(idleRight[0]);
+        duckTimer.mark();
+       
 
     }
     int imageIndex = 0;
+    public void runAway()
+    {
+       
+       
+    }
     public void animateDuck()
     {
         if(animationTimer.millisElapsed() < 100)
@@ -69,8 +76,26 @@ public class Duck extends SmoothMover
         setLocation(x,y);
         animateDuck();
 
-        checkWalls();
-        
+         if(duckTimer.millisElapsed() > 5000){
+            if(speedx > 0)
+            {
+                speedx = -speedx;
+                x = getExactX() + speedx;
+            }
+            if ( speedy > 0 )
+            {   speedy = - speedy;
+                y = getExactY() - speedy;
+            }
+            facing = "right";
+            setLocation(x,y);
+            animateDuck();
+            
+        }
+        else
+        {
+            checkWalls();
+
+        }
     }
     
     private void checkWalls(){

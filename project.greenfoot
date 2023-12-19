@@ -1,19 +1,22 @@
 #Greenfoot project file
-class.Crosshair.image=crosshair.png
+class.Crosshair.image=7648536.png
 class.Duck.image=bee.png
 class.MyWorld.image=gameBackground.png
 dependency1.from=MyWorld
 dependency1.to=Duck
 dependency1.type=UsesDependency
-dependency2.from=Duck
-dependency2.to=SimpleTimer
+dependency2.from=MyWorld
+dependency2.to=Crosshair
 dependency2.type=UsesDependency
+dependency3.from=Duck
+dependency3.to=SimpleTimer
+dependency3.type=UsesDependency
 editor.fx.0.height=739
 editor.fx.0.width=816
 editor.fx.0.x=337
 editor.fx.0.y=312
-height=1056
-package.numDependencies=2
+height=1047
+package.numDependencies=3
 package.numTargets=7
 project.charset=windows-1252
 publish.hasSource=false

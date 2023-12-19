@@ -16,7 +16,7 @@ public class Crosshair extends SmoothMover
     public Crosshair()
     {
         setImage(crosshair);
-        crosshair.scale(75,75);
+        crosshair.scale(50,50);
     }
     
     public void act()
