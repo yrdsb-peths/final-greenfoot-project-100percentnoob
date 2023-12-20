@@ -69,13 +69,14 @@ public class Duck extends SmoothMover
     public void act()
     {
         int ran = Greenfoot.getRandomNumber(1);
-        
+        MyWorld world = (MyWorld) getWorld();
+
 
         double x = getExactX() - speedx;
         double y = getExactY() + speedy;
         setLocation(x,y);
         animateDuck();
-
+        
          if(duckTimer.millisElapsed() > 5000){
             if(speedx > 0)
             {
@@ -89,7 +90,10 @@ public class Duck extends SmoothMover
             facing = "right";
             setLocation(x,y);
             animateDuck();
-            
+            if (getY() < 40)
+            {
+                world.removeObject(this);
+            }
         }
         else
         {

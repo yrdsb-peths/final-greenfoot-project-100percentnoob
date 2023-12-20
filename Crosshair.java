@@ -17,14 +17,25 @@ public class Crosshair extends SmoothMover
     {
         setImage(crosshair);
         crosshair.scale(50,50);
+        
     }
     
     public void act()
     {
+        MyWorld world = (MyWorld) getWorld();
         MouseInfo mouse = Greenfoot.getMouseInfo();
+        if(Greenfoot.mouseClicked(null))
+        {
+            if (isTouching(Duck.class))
+            {
+                world.increaseScore();
+       
+            }
+        }
         if(mouse != null)
         {
             setLocation(mouse.getX(),mouse.getY());
         }
+        
     }
 }
