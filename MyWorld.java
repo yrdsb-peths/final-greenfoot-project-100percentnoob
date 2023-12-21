@@ -10,7 +10,8 @@ public class MyWorld extends World
 {
     Label scoreLabel;
     public int score =0;
-
+    public int bulletcount = 3;
+    Label label;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -27,17 +28,37 @@ public class MyWorld extends World
         addObject(duck,40 + x,300);
         Crosshair crosshair = new Crosshair();
         addObject(crosshair,getWidth()/2,getHeight()/2);
+        
         scoreLabel = new Label(0,80);
         addObject(scoreLabel, 50, 50 );
-        
+
+        Label label = new Label(3, 75);
+        addObject(label,54,354);
+       
     }
+
     public void increaseScore(){
         score++;
         scoreLabel.setValue(score);
-        if(score% 5 == 0)
-        {
-        }
-        
-        
+
+    }
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+    public void prepare()
+    {
+       bulletcount --;
+       label.setValue(bulletcount);
     }
 }

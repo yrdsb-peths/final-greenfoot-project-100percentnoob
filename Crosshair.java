@@ -9,6 +9,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Crosshair extends SmoothMover
 {
     GreenfootImage crosshair = new GreenfootImage("crosshair.png");
+    int bulletCount = 4;
+    Label bulletLabel;
+    
     /**
      * Act - do whatever the Crosshair wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -17,7 +20,7 @@ public class Crosshair extends SmoothMover
     {
         setImage(crosshair);
         crosshair.scale(50,50);
-        
+       
     }
     
     public void act()
@@ -26,10 +29,11 @@ public class Crosshair extends SmoothMover
         MouseInfo mouse = Greenfoot.getMouseInfo();
         if(Greenfoot.mouseClicked(null))
         {
-            if (isTouching(Duck.class))
+            bulletCount --;
+            world.prepare();
+            if (isTouching(Duck.class)&& (bulletCount > 0) )
             {
                 world.increaseScore();
-       
             }
         }
         if(mouse != null)
@@ -37,5 +41,9 @@ public class Crosshair extends SmoothMover
             setLocation(mouse.getX(),mouse.getY());
         }
         
+        
+        
     }
+  
+    
 }
