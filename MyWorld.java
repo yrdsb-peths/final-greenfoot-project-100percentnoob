@@ -10,7 +10,7 @@ public class MyWorld extends World
 {
     Label scoreLabel;
     public int score =0;
-    public int bulletcount = 3;
+    public int bulletcount = 4;
     Label label;
     /**
      * Constructor for objects of class MyWorld.
@@ -23,24 +23,33 @@ public class MyWorld extends World
         GreenfootImage backgroundImage = getBackground();
         backgroundImage.scale(600,400);
         setBackground(backgroundImage);
-        Duck duck = new Duck();
-        int x = Greenfoot.getRandomNumber(500);
-        addObject(duck,40 + x,300);
+        createDuck();
+        
         Crosshair crosshair = new Crosshair();
         addObject(crosshair,getWidth()/2,getHeight()/2);
         
         scoreLabel = new Label(0,80);
         addObject(scoreLabel, 50, 50 );
 
-        Label label = new Label(3, 75);
+        label = new Label(bulletcount, 75);
         addObject(label,54,354);
        
     }
-
+    public void createDuck()
+    {
+        Duck duck = new Duck();
+        int x = Greenfoot.getRandomNumber(500);
+        addObject(duck,40 + x,300);
+    }
     public void increaseScore(){
         score++;
         scoreLabel.setValue(score);
 
+    }
+    public void resetbullet()
+    {
+        bulletcount = 4;
+        label.setValue(bulletcount);
     }
     /**
      * Prepare the world for the start of the program.

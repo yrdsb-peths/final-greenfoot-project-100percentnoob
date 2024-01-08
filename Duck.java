@@ -13,7 +13,7 @@ public class Duck extends SmoothMover
     double speedy = 3 + (Greenfoot.getRandomNumber(10) / 10);
     GreenfootImage[] idleRight = new GreenfootImage[3];
     GreenfootImage[] idleLeft = new GreenfootImage[3];
-
+    SimpleTimer DuckSpawn = new SimpleTimer();
     SimpleTimer animationTimer = new SimpleTimer();
     String facing = "left";
     SimpleTimer duckTimer = new SimpleTimer();
@@ -38,15 +38,11 @@ public class Duck extends SmoothMover
         animationTimer.mark();
         setImage(idleRight[0]);
         duckTimer.mark();
-       
+        
 
     }
     int imageIndex = 0;
-    public void runAway()
-    {
-       
-       
-    }
+    
     public void animateDuck()
     {
         if(animationTimer.millisElapsed() < 100)
@@ -70,14 +66,15 @@ public class Duck extends SmoothMover
     {
         int ran = Greenfoot.getRandomNumber(1);
         MyWorld world = (MyWorld) getWorld();
-
+      
 
         double x = getExactX() - speedx;
         double y = getExactY() + speedy;
         setLocation(x,y);
         animateDuck();
         
-         if(duckTimer.millisElapsed() > 5000){
+         if(duckTimer.millisElapsed() > 5000)
+         {
             if(speedx > 0)
             {
                 speedx = -speedx;
@@ -93,7 +90,10 @@ public class Duck extends SmoothMover
             if (getY() < 40)
             {
                 world.removeObject(this);
+                duckspawning();
+               
             }
+            
         }
         else
         {
@@ -101,7 +101,15 @@ public class Duck extends SmoothMover
 
         }
     }
-    
+    public void duckspawning(){
+        MyWorld world = (MyWorld) getWorld();
+        DuckSpawn.mark(); 
+         if (DuckSpawn.millisElapsed() > 1500)
+        {
+                    world.createDuck();
+
+        }
+    }
     private void checkWalls(){
         int rightBorder = 600;
         if (getY() < 40)
