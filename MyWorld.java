@@ -10,7 +10,8 @@ public class MyWorld extends World
 {
     Label scoreLabel;
     public int score =0;
-    public int bulletcount = 3;
+    public int bulletCount = 3;
+    public double speed = 0; 
     Label label;
     SimpleTimer duckSpawnDelayTimer = new SimpleTimer();
     boolean duckIsSpawning = false;
@@ -34,12 +35,22 @@ public class MyWorld extends World
         scoreLabel = new Label(0,80);
         addObject(scoreLabel, 50, 50 );
 
-        label = new Label(bulletcount, 75);
+        label = new Label(bulletCount, 75);
         addObject(label,54,354);
 
 
     }
-
+    
+     public int getBullet()
+    {
+        return bulletCount;
+    }
+    
+    public double getSpeed()
+    {
+        return speed;
+    }
+    
     public void createDuck()
     {
         duckSpawnDelayTimer.mark();
@@ -55,25 +66,28 @@ public class MyWorld extends World
     public void increaseScore(){
         score++;
         scoreLabel.setValue(score);
-
+        if (score % 5 == 0)
+        {
+            speed = speed + 5;
+        }
     }
 
     public void resetbullet()
     {
-        bulletcount = 3;
-        label.setValue(bulletcount);
+        bulletCount = 3;
+        label.setValue(bulletCount);
     }
 
 
     public void prepare()
     {
-        bulletcount --;
-        label.setValue(bulletcount);
+        bulletCount --;
+        label.setValue(bulletCount);
     }
 
     public void act() {
         if(duckIsSpawning){
-            if(duckSpawnDelayTimer.millisElapsed() >= 1000){
+            if(duckSpawnDelayTimer.millisElapsed() >= 1500){
                 duckIsSpawning = false;
                 duckSpawnDelayTimer.mark();
                 spawnDuck();

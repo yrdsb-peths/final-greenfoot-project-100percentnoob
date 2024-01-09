@@ -11,7 +11,7 @@ public class Crosshair extends SmoothMover
     GreenfootImage crosshair = new GreenfootImage("crosshair.png");
     int bulletCount = 4;
     Label bulletLabel;
-    SimpleTimer DuckSpawn = new SimpleTimer();
+
     /**
      * Act - do whatever the Crosshair wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -23,28 +23,25 @@ public class Crosshair extends SmoothMover
        
     }
     
+   
+    
     public void act()
     {
         MyWorld world = (MyWorld) getWorld();
         MouseInfo mouse = Greenfoot.getMouseInfo();
         if(Greenfoot.mouseClicked(null))
         {
-            
-            
             bulletCount --;
+            bulletCount = world.getBullet();
+            
             world.prepare();
             if (isTouching(Duck.class)&& (bulletCount > 0) )
             {
                 world.increaseScore();
                 removeTouching(Duck.class);
-                DuckSpawn.mark();
+                world.createDuck();
                 world.resetbullet();
-                if (DuckSpawn.millisElapsed() > 1500)
-                {
-                    world.createDuck();
-                    
-
-                }
+                
             }
             
         }

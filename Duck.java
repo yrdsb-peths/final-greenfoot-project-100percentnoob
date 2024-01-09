@@ -17,6 +17,7 @@ public class Duck extends SmoothMover
     SimpleTimer animationTimer = new SimpleTimer();
     String facing = "left";
     SimpleTimer duckTimer = new SimpleTimer();
+    double speed = 0;
     /**
      * Act - do whatever the Duck wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -61,11 +62,15 @@ public class Duck extends SmoothMover
         }
     }
 
+    
+    
     public void act()
     {
         int ran = Greenfoot.getRandomNumber(1);
         MyWorld world = (MyWorld) getWorld();
-
+        speed = world.getSpeed();
+        speedx = speedx + speed;
+        speedy = speedy + speed;
         double x = getExactX() - speedx;
         double y = getExactY() + speedy;
         setLocation(x,y);
