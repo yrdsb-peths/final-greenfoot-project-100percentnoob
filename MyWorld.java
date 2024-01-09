@@ -10,7 +10,7 @@ public class MyWorld extends World
 {
     Label scoreLabel;
     public int score =0;
-    public int bulletcount = 4;
+    public int bulletcount = 3;
     Label label;
     /**
      * Constructor for objects of class MyWorld.
@@ -48,7 +48,7 @@ public class MyWorld extends World
     }
     public void resetbullet()
     {
-        bulletcount = 4;
+        bulletcount = 3;
         label.setValue(bulletcount);
     }
     /**

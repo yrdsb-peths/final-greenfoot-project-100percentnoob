@@ -89,9 +89,11 @@ public class Duck extends SmoothMover
             animateDuck();
             if (getY() < 40)
             {
+                
+                duckSpawning();
                 world.removeObject(this);
-                duckspawning();
-               
+                DuckSpawn.mark();
+                
             }
             
         }
@@ -101,12 +103,12 @@ public class Duck extends SmoothMover
 
         }
     }
-    public void duckspawning(){
+    public void duckSpawning(){
         MyWorld world = (MyWorld) getWorld();
-        DuckSpawn.mark(); 
+        
          if (DuckSpawn.millisElapsed() > 1500)
         {
-                    world.createDuck();
+                world.createDuck();
 
         }
     }
