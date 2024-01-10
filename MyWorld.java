@@ -58,7 +58,7 @@ public class MyWorld extends World
     }
     
     private void spawnDuck(){
-        Duck duck = new Duck();
+        Duck duck = new Duck(10);
         int x = Greenfoot.getRandomNumber(500);
         addObject(duck, 50 + x,300);
        
