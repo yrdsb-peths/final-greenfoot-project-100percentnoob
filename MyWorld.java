@@ -11,7 +11,7 @@ public class MyWorld extends World
     Label scoreLabel;
     public int score =0;
     public int bulletCount = 3;
-    public double speed = 0; 
+    public double speed = 3; 
     Label label;
     SimpleTimer duckSpawnDelayTimer = new SimpleTimer();
     boolean duckIsSpawning = false;
@@ -69,7 +69,7 @@ public class MyWorld extends World
         scoreLabel.setValue(score);
         if (score % 5 == 0)
         {
-            speed += 1;
+            speed += 10;
         }
     }
 

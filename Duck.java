@@ -25,6 +25,7 @@ public class Duck extends SmoothMover
     public Duck(int speed)
     {
         this.speed = speed;
+        
         speedx = speed + (Greenfoot.getRandomNumber(10) / 10);
         speedy = speed + (Greenfoot.getRandomNumber(10) / 10);
 
