@@ -60,7 +60,8 @@ public class MyWorld extends World
     private void spawnDuck(){
         Duck duck = new Duck();
         int x = Greenfoot.getRandomNumber(500);
-        addObject(duck, 40 + x,300);
+        addObject(duck, 50 + x,300);
+       
     }
 
     public void increaseScore(){
@@ -68,7 +69,7 @@ public class MyWorld extends World
         scoreLabel.setValue(score);
         if (score % 5 == 0)
         {
-            speed = speed + 5;
+            speed += 1;
         }
     }
 
