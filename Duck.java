@@ -8,22 +8,25 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Duck extends SmoothMover
 {
-    int ran = Greenfoot.getRandomNumber(3);
-    double speedx = 3 + (Greenfoot.getRandomNumber(10) / 10);
-    double speedy = 3 + (Greenfoot.getRandomNumber(10) / 10);
+    double speed = 0;
+    double speedx = 0;
+    double speedy = 0;
     GreenfootImage[] idleRight = new GreenfootImage[3];
     GreenfootImage[] idleLeft = new GreenfootImage[3];
     SimpleTimer DuckSpawn = new SimpleTimer();
     SimpleTimer animationTimer = new SimpleTimer();
     String facing = "left";
     SimpleTimer duckTimer = new SimpleTimer();
-    double speed = 0;
+    
     /**
      * Act - do whatever the Duck wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public Duck()
+    public Duck(int speed)
     {
+        this.speed = speed;
+        speedx = speed + (Greenfoot.getRandomNumber(10) / 10);
+        speedy = speed + (Greenfoot.getRandomNumber(10) / 10);
 
         for(int i = 0; i< idleRight.length; i++)
         {
@@ -63,7 +66,6 @@ public class Duck extends SmoothMover
     }
 
     
-    
     public void act()
     {
         int ran = Greenfoot.getRandomNumber(1);
@@ -94,10 +96,8 @@ public class Duck extends SmoothMover
             {
                 world.createDuck();
                 world.removeObject(this);
-              
 
             }
-
         }
         else
         {
@@ -105,7 +105,6 @@ public class Duck extends SmoothMover
 
         }
     }
-    
 
     private void checkWalls(){
         int rightBorder = 600;
