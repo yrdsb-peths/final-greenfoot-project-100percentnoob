@@ -35,7 +35,7 @@ public class Crosshair extends SmoothMover
             bulletCount = world.getBullet();
             
             world.prepare();
-            if (isTouching(Duck.class)&& (bulletCount > 0) && (duckFlyAway.millisElapsed() < 5000))
+            if (isTouching(Duck.class)&& (bulletCount > 0) && (Duck.hittAble == true))
             {
                 world.increaseScore();
                 removeTouching(Duck.class);

@@ -17,11 +17,14 @@ public class Duck extends SmoothMover
     SimpleTimer animationTimer = new SimpleTimer();
     String facing = "left";
     SimpleTimer duckTimer = new SimpleTimer();
-    
+    SimpleTimer Hit = new SimpleTimer();
+    public static boolean hittAble = true;
     /**
      * Act - do whatever the Duck wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    
+   
     public Duck(int speed)
     {
         this.speed = speed;
@@ -43,7 +46,8 @@ public class Duck extends SmoothMover
         animationTimer.mark();
         setImage(idleRight[0]);
         duckTimer.mark();
-        
+        Hit.mark();
+        hittAble = true;
     }
     int imageIndex = 0;
 
@@ -63,9 +67,16 @@ public class Duck extends SmoothMover
         {
             setImage(idleLeft[imageIndex]);
             imageIndex = (imageIndex + 1) % idleLeft.length;
+            
         }
     }
-
+    public void hitOrNot()
+    {
+        if(Hit.millisElapsed() > 5000)
+        {
+            hittAble = false;
+        }
+    }
     
     public void act()
     {
@@ -76,7 +87,7 @@ public class Duck extends SmoothMover
         setLocation(x,y);
         animateDuck();
         flyAway(x,y);
-        
+        hitOrNot();
     }
     public void flyAway(double x,double y)
     {
@@ -101,7 +112,7 @@ public class Duck extends SmoothMover
                 world.createDuck();
                 world.removeObject(this);
                 world.resetbullet();
-                Crosshair.timer();
+                
             }
         }
         else

@@ -12,10 +12,13 @@ public class MyWorld extends World
     public int score =0;
     public int bulletCount = 3;
     public int speed = 3; 
+    int duckCount = 0;
+    int requriment = 10;
+    int numOfDuck = 0;
     Label label;
     SimpleTimer duckSpawnDelayTimer = new SimpleTimer();
     boolean duckIsSpawning = false;
-    int duckCount = 0;
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -65,13 +68,14 @@ public class MyWorld extends World
         if (duckCount % 10 == 0)
         {
             speed ++;
+            requriment --;
         }
     }
 
     public void increaseScore(){
         score++;
         scoreLabel.setValue(score);
-        
+        numOfDuck++;
     }
 
     public void resetbullet()
@@ -95,5 +99,10 @@ public class MyWorld extends World
                 spawnDuck();
             }
         }
+        //if(numOfDuck < requriment)
+        //{
+            //GameOver world = new GameOver();
+           // Greenfoot.setWorld(world);
+       // }
     }
 }
