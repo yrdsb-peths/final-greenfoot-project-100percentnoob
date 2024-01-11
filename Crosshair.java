@@ -11,7 +11,7 @@ public class Crosshair extends SmoothMover
     GreenfootImage crosshair = new GreenfootImage("crosshair.png");
     int bulletCount = 4;
     Label bulletLabel;
-
+    SimpleTimer duckFlyAway = new SimpleTimer();
     /**
      * Act - do whatever the Crosshair wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -20,7 +20,7 @@ public class Crosshair extends SmoothMover
     {
         setImage(crosshair);
         crosshair.scale(50,50);
-       
+        duckFlyAway.mark();
     }
     
    
@@ -35,13 +35,13 @@ public class Crosshair extends SmoothMover
             bulletCount = world.getBullet();
             
             world.prepare();
-            if (isTouching(Duck.class)&& (bulletCount > 0) )
+            if (isTouching(Duck.class)&& (bulletCount > 0) && (duckFlyAway.millisElapsed() < 5000))
             {
                 world.increaseScore();
                 removeTouching(Duck.class);
                 world.createDuck();
                 world.resetbullet();
-                
+                duckFlyAway.mark();
             }
             
         }
@@ -53,6 +53,10 @@ public class Crosshair extends SmoothMover
         
         
     }
-  
+    
+    public void timer()
+    {
+        duckFlyAway.mark();
+    }
     
 }

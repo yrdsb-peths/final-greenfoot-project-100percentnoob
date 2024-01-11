@@ -11,11 +11,11 @@ public class MyWorld extends World
     Label scoreLabel;
     public int score =0;
     public int bulletCount = 3;
-    public double speed = 3; 
+    public int speed = 3; 
     Label label;
     SimpleTimer duckSpawnDelayTimer = new SimpleTimer();
     boolean duckIsSpawning = false;
-
+    int duckCount = 0;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -58,19 +58,20 @@ public class MyWorld extends World
     }
     
     private void spawnDuck(){
-        Duck duck = new Duck(10);
+        Duck duck = new Duck(speed);
         int x = Greenfoot.getRandomNumber(500);
         addObject(duck, 50 + x,300);
-       
+        duckCount++;
+        if (duckCount % 10 == 0)
+        {
+            speed ++;
+        }
     }
 
     public void increaseScore(){
         score++;
         scoreLabel.setValue(score);
-        if (score % 5 == 0)
-        {
-            speed += 10;
-        }
+        
     }
 
     public void resetbullet()

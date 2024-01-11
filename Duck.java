@@ -75,7 +75,13 @@ public class Duck extends SmoothMover
         double y = getExactY() + speedy;
         setLocation(x,y);
         animateDuck();
-        setSpeed();
+        flyAway(x,y);
+        
+    }
+    public void flyAway(double x,double y)
+    {
+        MyWorld world = (MyWorld) getWorld();
+        
         if(duckTimer.millisElapsed() > 5000)
         {
             if(speedx > 0)
@@ -94,24 +100,16 @@ public class Duck extends SmoothMover
             {
                 world.createDuck();
                 world.removeObject(this);
-
+                world.resetbullet();
+                Crosshair.timer();
             }
         }
         else
         {
             checkWalls();
 
-        }
+        }  
     }
-
-    public void setSpeed()
-    {
-        MyWorld world = (MyWorld) getWorld();
-        speed = world.getSpeed();
-        speedx = speedx + speed;
-        speedy = speedy + speed;
-    }
-
 
     private void checkWalls(){
         int rightBorder = 600;
