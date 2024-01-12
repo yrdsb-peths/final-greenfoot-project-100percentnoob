@@ -122,7 +122,8 @@ public class Duck extends SmoothMover
         }  
     }
 
-    private void checkWalls(){
+    private void checkWalls()
+    {
         int rightBorder = 600;
         if (getY() < 40)
         {

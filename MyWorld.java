@@ -13,7 +13,7 @@ public class MyWorld extends World
     public int bulletCount = 3;
     public int speed = 3; 
     int duckCount = 0;
-    int requriment = 10;
+    int requriment = 5;
     int numOfDuck = 0;
     Label label;
     SimpleTimer duckSpawnDelayTimer = new SimpleTimer();
@@ -68,12 +68,37 @@ public class MyWorld extends World
         if (duckCount % 10 == 0)
         {
             speed ++;
-            requriment --;
+            requriment ++;
+            if(requriment > 10)
+            {
+                requriment = 10;
+            }
+            if(numOfDuck < requriment)
+            {  
+            GameOver world = new GameOver(score);
+            Greenfoot.setWorld(world);
+            }
+            numOfDuck = 0;
         }
     }
 
-    public void increaseScore(){
+    public void increaseScore1()
+    {
         score++;
+        scoreLabel.setValue(score);
+        numOfDuck++;
+    }
+    
+    public void increaseScore2()
+    {
+        score = score + 2;
+        scoreLabel.setValue(score);
+        numOfDuck++;
+    }
+    
+    public void increaseScore3()
+    {
+        score = score + 3;
         scoreLabel.setValue(score);
         numOfDuck++;
     }
@@ -91,18 +116,17 @@ public class MyWorld extends World
         label.setValue(bulletCount);
     }
 
-    public void act() {
-        if(duckIsSpawning){
-            if(duckSpawnDelayTimer.millisElapsed() >= 1500){
+    public void act() 
+    {
+        if(duckIsSpawning)
+        {
+            if(duckSpawnDelayTimer.millisElapsed() >= 1500)
+            {
                 duckIsSpawning = false;
                 duckSpawnDelayTimer.mark();
                 spawnDuck();
             }
         }
-        //if(numOfDuck < requriment)
-        //{
-            //GameOver world = new GameOver();
-           // Greenfoot.setWorld(world);
-       // }
+        
     }
 }
