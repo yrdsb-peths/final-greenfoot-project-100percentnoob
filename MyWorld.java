@@ -9,13 +9,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World
 {
     Label scoreLabel;
+    Label label;
+    Label Quota;
     public int score =0;
     public int bulletCount = 3;
     public int speed = 3; 
     int duckCount = 0;
     int requriment = 5;
     int numOfDuck = 0;
-    Label label;
     SimpleTimer duckSpawnDelayTimer = new SimpleTimer();
     boolean duckIsSpawning = false;
     
@@ -40,8 +41,11 @@ public class MyWorld extends World
 
         label = new Label(bulletCount, 75);
         addObject(label,54,354);
+        
+        Quota = new Label(numOfDuck + "/" + requriment, 50);
+        addObject(Quota,550,375);
 
-
+        
     }
     
      public int getBullet()
@@ -67,6 +71,7 @@ public class MyWorld extends World
         duckCount++;
         if (duckCount % 10 == 0)
         {
+            Quota.setValue(numOfDuck + "/" + requriment);
             speed ++;
             requriment ++;
             if(requriment > 10)
@@ -87,6 +92,7 @@ public class MyWorld extends World
         score++;
         scoreLabel.setValue(score);
         numOfDuck++;
+        Quota.setValue(numOfDuck + "/" + requriment);
     }
     
     public void increaseScore2()
@@ -94,6 +100,7 @@ public class MyWorld extends World
         score = score + 2;
         scoreLabel.setValue(score);
         numOfDuck++;
+        Quota.setValue(numOfDuck + "/" + requriment);
     }
     
     public void increaseScore3()
@@ -101,6 +108,7 @@ public class MyWorld extends World
         score = score + 3;
         scoreLabel.setValue(score);
         numOfDuck++;
+        Quota.setValue(numOfDuck + "/" + requriment);
     }
 
     public void resetbullet()

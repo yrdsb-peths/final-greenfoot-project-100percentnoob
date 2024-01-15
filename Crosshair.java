@@ -12,6 +12,7 @@ public class Crosshair extends SmoothMover
     int bulletCount = 4;
     Label bulletLabel;
     SimpleTimer duckFlyAway = new SimpleTimer();
+    GreenfootSound deadDuck = new GreenfootSound("Dead_duck.mp3");
     /**
      * Act - do whatever the Crosshair wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -41,6 +42,7 @@ public class Crosshair extends SmoothMover
                 world.createDuck();
                 world.resetbullet();
                 duckFlyAway.mark();
+                deadDuck.play();
                 if(bulletCount == 3)
                 {
                     world.increaseScore3();
