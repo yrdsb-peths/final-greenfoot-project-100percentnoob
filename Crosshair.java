@@ -10,6 +10,7 @@ public class Crosshair extends SmoothMover
 {
     GreenfootImage crosshair = new GreenfootImage("crosshair.png");
     int bulletCount = 4;
+    
     Label bulletLabel;
     SimpleTimer duckFlyAway = new SimpleTimer();
     GreenfootSound deadDuck = new GreenfootSound("Dead_duck.mp3");
@@ -55,8 +56,8 @@ public class Crosshair extends SmoothMover
                 {
                     world.increaseScore1();
                 }
+                
             }
-            
         }
         if(mouse != null)
         {

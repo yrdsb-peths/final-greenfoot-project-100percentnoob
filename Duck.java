@@ -19,12 +19,7 @@ public class Duck extends SmoothMover
     SimpleTimer duckTimer = new SimpleTimer();
     SimpleTimer Hit = new SimpleTimer();
     public static boolean hittAble = true;
-    /**
-     * Act - do whatever the Duck wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     
-   
     public Duck(int speed)
     {
         this.speed = speed;
@@ -50,7 +45,7 @@ public class Duck extends SmoothMover
         hittAble = true;
     }
     int imageIndex = 0;
-
+        
     public void animateDuck()
     {
         if(animationTimer.millisElapsed() < 100)
@@ -70,6 +65,7 @@ public class Duck extends SmoothMover
             
         }
     }
+    // This sets it so that when the duck runs away you can not hit it
     public void hitOrNot()
     {
         if(Hit.millisElapsed() > 5000)
@@ -89,6 +85,8 @@ public class Duck extends SmoothMover
         flyAway(x,y);
         hitOrNot();
     }
+    // This is for when the duck runs away it will always run to the top right
+    // Disappears after reaching the top
     public void flyAway(double x,double y)
     {
         MyWorld world = (MyWorld) getWorld();
@@ -121,7 +119,33 @@ public class Duck extends SmoothMover
 
         }  
     }
+    
+    public void FlyAway(double x,double y)
+    {
+            MyWorld world = (MyWorld) getWorld();
+            if(speedx > 0)
+            {
+                speedx = -speedx;
+                x = getExactX() + speedx;
+            }
+            if ( speedy > 0 )
+            {   speedy = - speedy;
+                y = getExactY() - speedy;
+            }
+            facing = "right";
+            setLocation(x,y);
+            animateDuck();
+            if (getY() < 40)
+            {
+                world.createDuck();
+                world.removeObject(this);
+                world.resetbullet();
+                
+            }
+    }
 
+    // It checks for the walls and also sets the duck to go where it would be
+    // facing 
     private void checkWalls()
     {
         int rightBorder = 600;
