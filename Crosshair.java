@@ -56,7 +56,11 @@ public class Crosshair extends SmoothMover
                 {
                     world.increaseScore1();
                 }
-                
+                if(bulletCount <= 0)
+                {
+                    
+                    
+                }
             }
         }
         if(mouse != null)
