@@ -86,7 +86,7 @@ public class Duck extends SmoothMover
         setLocation(x,y);
 
         animateDuck();
-        if (duckTimer.millisElapsed() > 5000){
+        if (duckTimer.millisElapsed() > 2000){
             isFlyingAway = true;
         }
         
